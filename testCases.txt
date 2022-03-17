@@ -1,0 +1,9 @@
+Comprobar un nodo solo con un valor y que no este conectado
+Comprobar un nodo con valor y que este conectado con el anterior
+Comprobar un nodo con valor y que este conectado con el posterior
+Comprobar un nodo con valor y que este conectado con el anterior y posterior
+Comprobar un nodo con valor y que este conectado con el anterior
+Comprobar un nodo con valor nulo
+Comprobar que un nodo sin anterior sea el primero
+Comprobar que un nodo sin posterior sea el ultimo
+Comprobar que un nodo con anterior y posterior no es ultimo ni primero
