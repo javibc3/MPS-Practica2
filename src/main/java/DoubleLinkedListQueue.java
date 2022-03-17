@@ -1,4 +1,4 @@
-public class DoubleEndedQueue<T> implements DoubleEndedQueuees<T> {
+public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void append(DequeNode<T> node) {
