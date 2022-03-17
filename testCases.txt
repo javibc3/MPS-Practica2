@@ -1,4 +1,4 @@
-Comprobar que un nodo se crea con el valor correcto
+Comprobar un nodo solo con un valor y que no este conectado
 Comprobar un nodo con valor y que este conectado con el anterior
 Comprobar un nodo con valor y que este conectado con el posterior
 Comprobar un nodo con valor y que este conectado con el anterior y posterior
