@@ -46,8 +46,8 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
         } else if(size == 0){
             throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR ULTIMO ELEMENTO");
         } else {
-        principio = null;
-        fin = null;
+            principio = null;
+            fin = null;
         }
         size--;
     }

@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,28 +62,28 @@ class DequeNodeTest {
 
     @Test
     public void siNoTieneAnteriorEsPrimero() {
-        DequeNode<Integer> Primero = new DequeNode<>(5,null,null);
-        DequeNode<Integer> Ultimo = new DequeNode<>(6,null,Primero);
-        Primero.setNext(Ultimo);
-        assertTrue(Primero.isFirstNode());
+        DequeNode<Integer> primero = new DequeNode<>(5,null,null);
+        DequeNode<Integer> ultimo = new DequeNode<>(6,null,primero);
+        primero.setNext(ultimo);
+        assertThat(primero.isFirstNode());
     }
 
     @Test
     public void siNoTienePosteriorEsUltimo() {
-        DequeNode<Integer> Primero = new DequeNode<>(5,null,null);
-        DequeNode<Integer> Ultimo = new DequeNode<>(6,null,Primero);
-        Primero.setNext(Ultimo);
-        assertTrue(Ultimo.isLastNode());
+        DequeNode<Integer> primero = new DequeNode<>(5,null,null);
+        DequeNode<Integer> ultimo = new DequeNode<>(6,null,primero);
+        primero.setNext(ultimo);
+        assertThat(ultimo.isLastNode());
     }
 
     @Test
     public void siTieneAnteriorYPosteriorNoEsNiPrimeroNiUltimo() {
-        DequeNode<Integer> Primero = new DequeNode<>(5,null,null);
-        DequeNode<Integer> Medio = new DequeNode<>(6,null,Primero);
-        DequeNode<Integer> Ultimo = new DequeNode<>(6,null,Medio);
-        Primero.setNext(Medio);
-        Medio.setNext(Ultimo);
-        Ultimo.setPrevious(Medio);
-        assertTrue(Medio.isNotATerminalNode());
+        DequeNode<Integer> primero = new DequeNode<>(5,null,null);
+        DequeNode<Integer> medio = new DequeNode<>(6,null,primero);
+        DequeNode<Integer> ultimo = new DequeNode<>(6,null,medio);
+        primero.setNext(medio);
+        medio.setNext(ultimo);
+        ultimo.setPrevious(medio);
+        assertThat(medio.isNotATerminalNode());
     }
 }
