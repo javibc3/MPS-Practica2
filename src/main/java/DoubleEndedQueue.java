@@ -25,6 +25,8 @@ public class DoubleEndedQueue<T> implements DoubleEndedQueuees<T> {
         if(principio.getNext() != null) {
             principio = principio.getNext();
             principio.setPrevious(null);
+        } else if(size == 0){
+            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR PRIMER ELEMENTO");
         } else {
             principio = null;
             fin = null;
@@ -37,6 +39,8 @@ public class DoubleEndedQueue<T> implements DoubleEndedQueuees<T> {
         if(fin.getPrevious() != null) {
             fin = fin.getPrevious();
             fin.setNext(null);
+        } else if(size == 0){
+            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR ULTIMO ELEMENTO");
         } else {
         principio = null;
         fin = null;
