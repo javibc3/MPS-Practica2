@@ -1,10 +1,10 @@
-public class DoubleEndedQueue<T> implements DoubleEndedQueuees<T> {
+public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
-    DequeNode<T> principio;
-    DequeNode<T> fin;
-    int size;
+    private DequeNode<T> principio;
+    private DequeNode<T> fin;
+    private int size;
 
-    public DoubleEndedQueue(DequeNode<T> nodo){
+    public DoubleLinkedListQueue(DequeNode<T> nodo){
         principio = nodo;
         fin = nodo;
         size = (nodo != null) ? 1 : 0;
@@ -17,7 +17,11 @@ public class DoubleEndedQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void appendLeft(DequeNode<T> node) {
-
+        principio.setPrevious(node);
+        node.setPrevious(null);
+        node.setNext(principio);
+        principio = node;
+        size++;
     }
 
     @Override
