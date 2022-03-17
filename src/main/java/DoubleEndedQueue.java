@@ -1,5 +1,13 @@
 public class DoubleEndedQueue<T> implements DoubleEndedQueuees<T> {
 
+    DequeNode<T> principio;
+    DequeNode<T> fin;
+
+    public DoubleEndedQueue(DequeNode<T> nodo){
+        principio = nodo;
+        fin = nodo;
+    }
+
     @Override
     public void append(DequeNode<T> node) {
 
