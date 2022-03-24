@@ -182,7 +182,7 @@ class DoubleLinkedListQueueTest {
         listaActual.deleteLast();
 
         assertEquals(2, listaActual.size());
-        assertEquals(segundo, listaActual.peekLast());
+        assertEquals(ultimo, listaActual.peekLast());
     }
 
     @Test
@@ -212,7 +212,7 @@ class DoubleLinkedListQueueTest {
         listaActual.deleteFirst();
 
         assertEquals(2, listaActual.size());
-        assertEquals(segundo, listaActual.peekFirst());
+        assertEquals(ultimo, listaActual.peekFirst());
     }
 
     @Test
@@ -224,6 +224,14 @@ class DoubleLinkedListQueueTest {
 
         assertEquals(0, listaActual.size());
         assertNull(listaActual.peekFirst());
+    }
+
+    @Test
+    public void deleteSaltaExcepcionSiListaEstaVacia() {
+        DequeNode primero = new DequeNode(2, null, null);
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(null);
+
+        assertThrows(RuntimeException.class,()->listaActual.delete(primero));
     }
 
     @Test
