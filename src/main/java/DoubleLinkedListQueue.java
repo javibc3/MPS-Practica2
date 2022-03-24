@@ -44,7 +44,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public void deleteFirst() {
         if(size == 0) {
-            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR PRIMER ELEMENTO");
+            throw new RuntimeException("ERROR: LA LISTA ESTA VACIA AL INTENTAR BORRAR EL PRIMER ELEMENTO");
         }
         if(principio.getNext() != null) {
             principio = principio.getNext();
@@ -106,8 +106,8 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public DequeNode<T> find(T item) {
         if (item == null) throw new RuntimeException("Item a encontrar no puede ser null");
-        DequeNode<T> nodo = principio;
-        while (nodo != null && !nodo.getItem().equals(item)) {
+        DequeNode nodo = principio;
+        while (nodo != null && nodo.getItem() != item) {
             nodo = nodo.getNext();
         }
         return nodo;
@@ -116,50 +116,27 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public void delete(DequeNode<T> node) {
         if (node == null) throw new RuntimeException("Nodo a borrar no puede ser null");
-
-        DequeNode<T> nodo = principio;
+        DequeNode nodo = principio;
         while (nodo != null && nodo != node) {
             nodo = nodo.getNext();
         }
         if (nodo == null) throw new RuntimeException("Nodo a borrar no está en la lista");
 
-        DequeNode<T> nodoAnterior = nodo.getPrevious();
-        DequeNode<T> nodoSiguiente = nodo.getNext();
-
-        if (nodoAnterior != null) {
-            nodoAnterior.setNext(nodoSiguiente);
+        if (nodo.isFirstNode()) {
+            deleteFirst();
+        } else if (nodo.isLastNode()) {
+            deleteLast();
         } else {
-            principio = nodoSiguiente;
-        }
-
-        if (nodoSiguiente != null) {
-            nodoSiguiente.setPrevious(nodoAnterior);
-        } else {
-            fin = nodoAnterior;
-        }
-    }
-
-    private <T> void sortHelper(Comparator<T> comparator) {
-        boolean swapped = false;
-        int sz = size;
-        while (!swapped) {
-            for (int i = 1; i <= sz - 1; i++) {
-                DequeNode<T> nodoAnterior = (DequeNode<T>) getAt(i - 1);
-                DequeNode<T> nodoSiguiente = (DequeNode<T>) getAt(i);
-
-                if (comparator.compare(nodoAnterior.getItem(), nodoSiguiente.getItem()) > 0) {
-                    T aux = nodoAnterior.getItem();
-                    nodoAnterior.setItem(nodoSiguiente.getItem());
-                    nodoSiguiente.setItem(aux);
-                    swapped = true;
-                }
-            }
-            sz--;
+            DequeNode anterior = nodo.getPrevious();
+            anterior.setNext(nodo.getNext());
+            DequeNode siguiente = nodo.getNext();
+            siguiente.setPrevious(nodo.getPrevious());
+            size--;
         }
     }
 
     @Override
     public void sort(Comparator<?> comparator) {
-        sortHelper(comparator);
+
     }
 }
