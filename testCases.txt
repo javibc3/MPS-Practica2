@@ -39,8 +39,6 @@ Comprobar a borrar el unico nodo en una lista con un nodo con la operacion gener
 Comprobar a borrar un nodo de una lista sin nodos con la operacion generica de delete
 Comprobar a borrar un nodo nulo en una lista con tres nodos, ninguno nulo, con la operacion generica de delete
 Comprobar a borrar un nodo que no esta en una lista que tiene tres nodos con la operacion generica de delete
-
-
 Comprobar que ordenar una lista vacia devuelve una lista vacia
 Comprobar que ordenar una lista con un elemento devuelve la misma lista
 Comprobar que ordenar una lista con mas de un elemento devuelve la lista ordenada
