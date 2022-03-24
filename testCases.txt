@@ -16,8 +16,7 @@ Comprobar a añadir un nodo por la derecha con una lista con un elemento
 Comprobar a añadir un nodo por la izquierda en una lista vacia
 Comporbar a añadir un nodo por la izquieda con una lista con un elemento
 Comprobar a añadir un nodo nulo en una lista
-Comprobar que el nodo añadido por la izquierda este correctamente conectado en una lista con un elemento
-Comprobar que el nodo añadido por la izquierda este correctamente conectado en una lista vacia
+
 Comprobar a buscar un elemento en la posicion 0 en una lista vacia
 Comprobar a buscar un elemnto en la posicion 5 en una lista con un elemento
 Comprobar a buscar un elemento en la posicion -10 en una lista con dos elementos
@@ -41,4 +40,8 @@ Comprobar a borrar un nodo de una lista sin nodos con la operacion generica de d
 Comprobar a borrar un nodo nulo en una lista con tres nodos, ninguno nulo, con la operacion generica de delete
 Comprobar a borrar un nodo que no esta en una lista que tiene tres nodos con la operacion generica de delete
 
+
+Comprobar que ordenar una lista vacia devuelve una lista vacia
+Comprobar que ordenar una lista con un elemento devuelve la misma lista
+Comprobar que ordenar una lista con mas de un elemento devuelve la lista ordenada
 
