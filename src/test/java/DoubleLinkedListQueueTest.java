@@ -66,9 +66,9 @@ class DoubleLinkedListQueueTest {
 
         lista.appendLeft(node2);
 
-        assertEquals(node,node2.getPrevious());
+        assertEquals(node,node2.getNext());
 
-        assertNull(node2.getNext());
+        assertNull(node2.getPrevious());
     }
 
     @Test
@@ -114,15 +114,15 @@ class DoubleLinkedListQueueTest {
 
         DequeNode<Integer> node = new DequeNode(2,null,null);
 
-        lista.append(new DequeNode<>(0,null,null));
+        lista.appendLeft(new DequeNode<>(0,null,null));
 
-        lista.append(new DequeNode(1,null,null));
+        lista.appendLeft(new DequeNode(1,null,null));
 
-        lista.append(node);
+        lista.appendLeft(node);
 
-        lista.append(new DequeNode(3,null,null));
+        lista.appendLeft(new DequeNode(3,null,null));
 
-        lista.append(new DequeNode(4,null,null));
+        lista.appendLeft(new DequeNode(4,null,null));
 
         assertEquals(node,lista.getAt(2));
     }

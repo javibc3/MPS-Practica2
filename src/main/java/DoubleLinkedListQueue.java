@@ -33,9 +33,9 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
             fin = node;
         }
         else {
-            principio.setNext(node);
-            node.setPrevious(principio);
-            node.setNext(null);
+            principio.setPrevious(node);
+            node.setPrevious(null);
+            node.setNext(principio);
             principio = node;
         }
         size++;
