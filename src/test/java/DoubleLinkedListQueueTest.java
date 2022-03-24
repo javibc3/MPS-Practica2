@@ -83,4 +83,67 @@ class DoubleLinkedListQueueTest {
 
         assertNull(node.getNext());
     }
+
+    @Test
+    public void deleteLastBorraUltimoElemento() {
+        DequeNode<Integer> primero = new DequeNode(2, null, null);
+        DequeNode<Integer> ultimo = new DequeNode(3, null, null);
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue<Integer>(primero);
+        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue<Integer>(primero);
+        listaActual.append(ultimo);
+        listaActual.deleteLast();
+
+        assertEquals(listaActual.size(), listaEsperada.size());
+        assertEquals(listaEsperada.peekFirst(), listaActual.peekFirst());
+    }
+
+    @Test
+    public void deleteLastBorraUnicoElemento() {
+        DequeNode<Integer> ultimo = new DequeNode(2, null, null);
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue<Integer>(ultimo);
+        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue<Integer>(null);
+        listaActual.deleteLast();
+
+        assertEquals(listaActual.size(), listaEsperada.size());
+        assertEquals(listaEsperada.peekLast(), listaActual.peekLast());
+    }
+
+    @Test
+    public void deleteLastSaltaExcepcionSiListaEstaVacia() {
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue<Integer>(null);
+        assertThrows(RuntimeException.class,()->listaActual.deleteLast());
+    }
+
+    @Test
+    public void deleteFirstBorraPrimerElemento()
+    {
+        DequeNode<Integer> primero = new DequeNode(2, null, null);
+        DequeNode<Integer> ultimo = new DequeNode(3, null, null);
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue<Integer>(primero);
+        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue<Integer>(ultimo);
+        listaActual.append(ultimo);
+        listaActual.deleteFirst();
+
+        assertEquals(listaActual.size(), listaEsperada.size());
+        assertEquals(listaEsperada.peekFirst(), listaActual.peekFirst());
+    }
+
+
+    @Test
+    public void deleteFirstBorraUnicoElemento()
+    {
+        DequeNode<Integer> primero = new DequeNode(2, null, null);
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue<Integer>(primero);
+        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue<Integer>(null);
+        listaActual.deleteFirst();
+
+        assertEquals(listaActual.size(), listaEsperada.size());
+        assertEquals(listaEsperada.peekFirst(), listaActual.peekFirst());
+    }
+
+    @Test
+    public void deleteFirstSaltaExcepcionSiListaEstaVacia() {
+        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue<Integer>(null);
+        assertThrows(RuntimeException.class,()->listaActual.deleteFirst());
+    }
 }
