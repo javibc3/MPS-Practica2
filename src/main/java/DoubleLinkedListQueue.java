@@ -25,10 +25,17 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void appendLeft(DequeNode<T> node) {
-        principio.setPrevious(node);
-        node.setPrevious(null);
-        node.setNext(principio);
-        principio = node;
+        if (node == null) throw new RuntimeException("El nodo que ha pasado es NULL");
+        if(size == 0){
+            principio = node;
+            fin = node;
+        }
+        else {
+            principio.setNext(node);
+            node.setPrevious(principio);
+            node.setNext(null);
+            principio = node;
+        }
         size++;
     }
 
