@@ -2,8 +2,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 
-import static org.assertj.core.api.Assertions.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleLinkedListQueueTest {
@@ -257,9 +255,13 @@ class DoubleLinkedListQueueTest {
         DequeNode<Integer> nodo1 = new DequeNode<>(1, null, null);
         DequeNode<Integer> nodo2 = new DequeNode<>(2, null, null);
         DequeNode<Integer> nodo3 = new DequeNode<>(3, null, null);
+        DequeNode<Integer> nodo4 = new DequeNode<>(4, null, null);
+        DequeNode<Integer> nodo5 = new DequeNode<>(5, null, null);
 
         DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(nodo2);
         lista.append(nodo3);
+        lista.append(nodo5);
+        lista.append(nodo4);
         lista.append(nodo1);
 
         lista.sort(new Comparator<Integer>() {
@@ -275,9 +277,11 @@ class DoubleLinkedListQueueTest {
             System.out.println(lista.getAt(i).getItem());
         }
 
-        assertEquals(3, lista.size());
+        assertEquals(5, lista.size());
         assertEquals(1, lista.getAt(0).getItem());
         assertEquals(2, lista.getAt(1).getItem());
         assertEquals(3, lista.getAt(2).getItem());
+        assertEquals(4, lista.getAt(3).getItem());
+        assertEquals(5, lista.getAt(4).getItem());
     }
 }
