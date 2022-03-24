@@ -40,8 +40,7 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void AñadirNodoNullLanzaExcepcion()
-    {
+    public void AñadirNodoNullLanzaExcepcion() {
         DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
         assertThrows(RuntimeException.class, () -> lista.append(null));
     }
