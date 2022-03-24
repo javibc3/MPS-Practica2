@@ -95,7 +95,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
             throw new IndexOutOfBoundsException("La posicion introducida es negativa");
         }
         else{
-            DequeNode node = principio;
+            DequeNode<T> node = principio;
             for(int i = 0; i < position; i++){
                 node = node.getNext();
             }
@@ -106,7 +106,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public DequeNode<T> find(T item) {
         if (item == null) throw new RuntimeException("Item a encontrar no puede ser null");
-        DequeNode nodo = principio;
+        DequeNode<T> nodo = principio;
         while (nodo != null && nodo.getItem() != item) {
             nodo = nodo.getNext();
         }
@@ -140,8 +140,27 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
         }
     }
 
+    private <T> void sortHelper(Comparator<T> comparator) {
+        boolean swapped = false;
+        int sz = size;
+        while (!swapped) {
+            for (int i = 1; i <= sz - 1; i++) {
+                DequeNode<T> nodoAnterior = (DequeNode<T>) getAt(i - 1);
+                DequeNode<T> nodoSiguiente = (DequeNode<T>) getAt(i);
+
+                if (comparator.compare(nodoAnterior.getItem(), nodoSiguiente.getItem()) > 0) {
+                    T aux = nodoAnterior.getItem();
+                    nodoAnterior.setItem(nodoSiguiente.getItem());
+                    nodoSiguiente.setItem(aux);
+                    swapped = true;
+                }
+            }
+            sz--;
+        }
+    }
+
     @Override
     public void sort(Comparator<?> comparator) {
-
+        sortHelper(comparator);
     }
 }
