@@ -164,6 +164,7 @@ class DoubleLinkedListQueueTest {
         DequeNode segundo = new DequeNode(3, null, null);
         DequeNode ultimo = new DequeNode(4, null, null);
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
+
         listaActual.append(segundo);
         listaActual.append(ultimo);
         listaActual.deleteLast();
@@ -176,6 +177,7 @@ class DoubleLinkedListQueueTest {
     public void deleteLastBorraUnicoElemento() {
         DequeNode ultimo = new DequeNode(2, null, null);
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(ultimo);
+
         listaActual.deleteLast();
 
         assertEquals(0, listaActual.size());
@@ -185,6 +187,7 @@ class DoubleLinkedListQueueTest {
     @Test
     public void deleteLastSaltaExcepcionSiListaEstaVacia() {
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(null);
+
         assertThrows(RuntimeException.class,()->listaActual.deleteLast());
     }
 
@@ -194,6 +197,7 @@ class DoubleLinkedListQueueTest {
         DequeNode segundo = new DequeNode(3, null, null);
         DequeNode ultimo = new DequeNode(4, null, null);
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
+
         listaActual.append(segundo);
         listaActual.append(ultimo);
         listaActual.deleteFirst();
@@ -206,6 +210,7 @@ class DoubleLinkedListQueueTest {
     public void deleteFirstBorraUnicoElemento() {
         DequeNode primero = new DequeNode(2, null, null);
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
+
         listaActual.deleteFirst();
 
         assertEquals(0, listaActual.size());
@@ -215,6 +220,7 @@ class DoubleLinkedListQueueTest {
     @Test
     public void deleteFirstSaltaExcepcionSiListaEstaVacia() {
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(null);
+
         assertThrows(RuntimeException.class,()->listaActual.deleteFirst());
     }
 
@@ -278,6 +284,7 @@ class DoubleLinkedListQueueTest {
     public void deleteSaltaExcepcionSiNodoEsNulo() {
         DequeNode primero = new DequeNode(2, null, null);
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
+
         assertThrows(RuntimeException.class,()->listaActual.delete(null));
     }
 
@@ -286,6 +293,7 @@ class DoubleLinkedListQueueTest {
         DequeNode primero = new DequeNode(2, null, null);
         DequeNode nodoABorrar = new DequeNode(5, null, null);
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
+
         assertThrows(RuntimeException.class,()->listaActual.delete(nodoABorrar));
     }
 }
