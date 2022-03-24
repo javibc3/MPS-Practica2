@@ -33,9 +33,9 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
             fin = node;
         }
         else {
-            principio.setNext(node);
-            node.setPrevious(principio);
-            node.setNext(null);
+            principio.setPrevious(node);
+            node.setPrevious(null);
+            node.setNext(principio);
             principio = node;
         }
         size++;
@@ -43,11 +43,12 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void deleteFirst() {
+        if(size == 0) {
+            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR PRIMER ELEMENTO");
+        }
         if(principio.getNext() != null) {
             principio = principio.getNext();
             principio.setPrevious(null);
-        } else if(size == 0){
-            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR PRIMER ELEMENTO");
         } else {
             principio = null;
             fin = null;
@@ -57,11 +58,12 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void deleteLast() {
-        if(fin.getPrevious() != null) {
+        if(size == 0) {
+            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR ULTIMO ELEMENTO");
+        }
+        if(fin.getPrevious() != null){
             fin = fin.getPrevious();
             fin.setNext(null);
-        } else if(size == 0){
-            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR ULTIMO ELEMENTO");
         } else {
             principio = null;
             fin = null;
@@ -86,7 +88,19 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public DequeNode<T> getAt(int position) {
-        return null;
+        if(position >= size){
+            throw new IndexOutOfBoundsException("La posicion introducida supera el tamaño de la cola");
+        }
+        else if(position < 0){
+            throw new IndexOutOfBoundsException("La posicion introducida es negativa");
+        }
+        else{
+            DequeNode node = principio;
+            for(int i = 0; i < position; i++){
+                node = node.getNext();
+            }
+            return node;
+        }
     }
 
     @Override
