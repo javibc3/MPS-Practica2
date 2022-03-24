@@ -4,7 +4,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     private DequeNode<T> fin;
     private int size;
 
-    public DoubleLinkedListQueue(DequeNode<T> nodo){
+    public DoubleLinkedListQueue(DequeNode<T> nodo) {
         principio = nodo;
         fin = nodo;
         size = (nodo != null) ? 1 : 0;
@@ -12,7 +12,15 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void append(DequeNode<T> node) {
-
+        if (node == null) throw new RuntimeException("El nodo que ha pasado es NULL");
+        if (size > 0) {
+            fin.setNext(node);
+            node.setPrevious(fin);
+        } else {
+            principio = node;
+        }
+        fin = node;
+        size++;
     }
 
     @Override
