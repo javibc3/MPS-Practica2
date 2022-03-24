@@ -86,7 +86,19 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public DequeNode<T> getAt(int position) {
-        return null;
+        if(position >= size){
+            throw new IndexOutOfBoundsException("La posicion introducida supera el tamaño de la cola");
+        }
+        else if(position < 0){
+            throw new IndexOutOfBoundsException("La posicion introducida es negativa");
+        }
+        else{
+            DequeNode node = principio;
+            for(int i = 0; i < position; i++){
+                node = node.getNext();
+            }
+            return node;
+        }
     }
 
     @Override
