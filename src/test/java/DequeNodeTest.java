@@ -1,13 +1,12 @@
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DequeNodeTest {
 
     @Test
-    public void NodoSeCreaConValorCorrecto()
-    {
+    public void NodoSeCreaConValorCorrecto() {
         DequeNode<Integer> nodo = new DequeNode(2, null, null);
 
         int expectedValue = 2;
