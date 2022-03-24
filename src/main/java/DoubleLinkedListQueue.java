@@ -95,7 +95,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
             throw new IndexOutOfBoundsException("La posicion introducida es negativa");
         }
         else{
-            DequeNode node = principio;
+            DequeNode<T> node = principio;
             for(int i = 0; i < position; i++){
                 node = node.getNext();
             }
@@ -116,31 +116,51 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public void delete(DequeNode<T> node) {
         if (node == null) throw new RuntimeException("Nodo a borrar no puede ser null");
+
         DequeNode<T> nodo = principio;
         while (nodo != null && nodo != node) {
             nodo = nodo.getNext();
         }
+
         if (nodo == null) throw new RuntimeException("Nodo a borrar no está en la lista");
 
-        if (nodo.isFirstNode()) {
-            principio = nodo.getNext();
-            principio.setPrevious(null);
+        DequeNode<T> nodoAnterior = nodo.getPrevious();
+        DequeNode<T> nodoSiguiente = nodo.getNext();
+
+        if (nodoAnterior != null) {
+            nodoAnterior.setNext(nodoSiguiente);
         } else {
-            DequeNode<T> anterior = nodo.getPrevious();
-            anterior.setNext(nodo.getNext());
+            principio = nodoSiguiente;
         }
 
-        if (nodo.isLastNode()) {
-            fin = nodo.getPrevious();
-            fin.setNext(null);
+        if (nodoSiguiente != null) {
+            nodoSiguiente.setPrevious(nodoAnterior);
         } else {
-            DequeNode<T> siguiente = nodo.getNext();
-            siguiente.setPrevious(nodo.getPrevious());
+            fin = nodoAnterior;
+        }
+    }
+
+    private <T> void sortHelper(Comparator<T> comparator) {
+        boolean swapped = false;
+        int sz = size;
+        while (!swapped) {
+            for (int i = 1; i <= sz - 1; i++) {
+                DequeNode<T> nodoAnterior = (DequeNode<T>) getAt(i - 1);
+                DequeNode<T> nodoSiguiente = (DequeNode<T>) getAt(i);
+
+                if (comparator.compare(nodoAnterior.getItem(), nodoSiguiente.getItem()) > 0) {
+                    T aux = nodoAnterior.getItem();
+                    nodoAnterior.setItem(nodoSiguiente.getItem());
+                    nodoSiguiente.setItem(aux);
+                    swapped = true;
+                }
+            }
+            sz--;
         }
     }
 
     @Override
     public void sort(Comparator<?> comparator) {
-
+        sortHelper(comparator);
     }
 }
