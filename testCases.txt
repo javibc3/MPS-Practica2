@@ -27,4 +27,18 @@ Comprobar a buscar el elemento 2 en una lista de dos elementos y que contiene el
 Comprobar a buscar el elemento 2 en una lista de dos elementos y que no contiene el elemento 2
 Comprobar a buscar el elemento "dos" en una lista con un elemento y contiene a "dos"
 Comprobar a buscar el elemento "cinco" en una lista vacia
+Comprobar a borrar el ultimo nodo de una lista con tres nodos con la operacion de deleteLast
+Comprobar a borrar el ultimo nodo de una lista con un nodo con la operacion de deleteLast
+Comprobar a borrar el ultimo nodo de una lista sin nodos con la operacion de deleteLast
+Comprobar a borrar el primer nodo de una lista con tres nodos con la operacion de deleteFirst
+Comprobar a borrar el primer nodo de una lista con un nodo con la operacion de deleteFirst
+Comprobar a borrar el primer nodo de una lista sin nodos con la operacion de deleteFirst
+Comprobar a borrar un nodo que no es ni primero ni ultimo en una lista con tres nodos con la operacion generica de delete
+Comprobar a borrar el primer nodo de una lista con tres nodos con la operacion generica de delete
+Comprobar a borrar el ultimo nodo de una lista con tres nodos con la operacion generica de delete
+Comprobar a borrar el unico nodo en una lista con un nodo con la operacion generica de delete
+Comprobar a borrar un nodo de una lista sin nodos con la operacion generica de delete
+Comprobar a borrar un nodo nulo en una lista con tres nodos, ninguno nulo, con la operacion generica de delete
+Comprobar a borrar un nodo que no esta en una lista que tiene tres nodos con la operacion generica de delete
+
 
