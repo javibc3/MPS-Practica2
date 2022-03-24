@@ -66,7 +66,7 @@ class DoubleLinkedListQueueTest {
 
         lista.appendLeft(node2);
 
-        assertEquals(node2.getPrevious(),node);
+        assertEquals(node,node2.getPrevious());
 
         assertNull(node2.getNext());
     }
@@ -82,5 +82,48 @@ class DoubleLinkedListQueueTest {
         assertNull(node.getPrevious());
 
         assertNull(node.getNext());
+    }
+
+    @Test
+    public void buscarUnElementoEnLaPosicionCeroEnColaVacia(){
+        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+
+        assertThrows(IndexOutOfBoundsException.class,()->{
+            lista.getAt(0);
+        });
+    }
+
+    @Test
+    public void buscarUnElementoEnLaPosicionCincoEnColaConUnElemento(){
+        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+
+        DequeNode<Integer> node = new DequeNode<>(1,null,null);
+
+        lista.appendLeft(node);
+
+        assertThrows(IndexOutOfBoundsException.class,()->{
+            lista.getAt(5);
+        });
+    }
+
+
+
+    @Test
+    public void buscarUnElementoEnLaPosicionDosEnColaConCincoElementos(){
+        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+
+        DequeNode<Integer> node = new DequeNode(2,null,null);
+
+        lista.append(new DequeNode<>(0,null,null));
+
+        lista.append(new DequeNode(1,null,null));
+
+        lista.append(node);
+
+        lista.append(new DequeNode(3,null,null));
+
+        lista.append(new DequeNode(4,null,null));
+
+        assertEquals(node,lista.getAt(2));
     }
 }
