@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+
+import java.util.Comparator;
+
 import static org.assertj.core.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -216,5 +219,65 @@ class DoubleLinkedListQueueTest {
     public void deleteFirstSaltaExcepcionSiListaEstaVacia() {
         DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(null);
         assertThrows(RuntimeException.class,()->listaActual.deleteFirst());
+    }
+
+    @Test
+    public void sortDeListaVacia() {
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
+        lista.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 < o2) return -1;
+                if (o1 == o2) return 0;
+                return 1;
+            }
+        });
+        assertEquals(0, lista.size());
+    }
+
+    @Test
+    public void sortDeListaConUnElemento() {
+        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(nodo);
+        lista.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 < o2) return -1;
+                if (o1 == o2) return 0;
+                return 1;
+            }
+        });
+        assertEquals(1, lista.size());
+        assertEquals(nodo, lista.peekFirst());
+        assertEquals(nodo, lista.peekLast());
+    }
+
+    @Test
+    public void sortDeListaConMasDeUnElemento() {
+        DequeNode<Integer> nodo1 = new DequeNode<>(1, null, null);
+        DequeNode<Integer> nodo2 = new DequeNode<>(2, null, null);
+        DequeNode<Integer> nodo3 = new DequeNode<>(3, null, null);
+
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(nodo2);
+        lista.append(nodo3);
+        lista.append(nodo1);
+
+        lista.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 < o2) return -1;
+                if (o1 == o2) return 0;
+                return 1;
+            }
+        });
+
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.getAt(i).getItem());
+        }
+
+        assertEquals(3, lista.size());
+        assertEquals(1, lista.getAt(0).getItem());
+        assertEquals(2, lista.getAt(1).getItem());
+        assertEquals(3, lista.getAt(2).getItem());
     }
 }
