@@ -44,7 +44,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public void deleteFirst() {
         if(size == 0) {
-            throw new RuntimeException("ERROR: LISTA VACIA AL BORRAR PRIMER ELEMENTO");
+            throw new RuntimeException("ERROR: LA LISTA ESTA VACIA AL INTENTAR BORRAR EL PRIMER ELEMENTO");
         }
         if(principio.getNext() != null) {
             principio = principio.getNext();
@@ -123,19 +123,15 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
         if (nodo == null) throw new RuntimeException("Nodo a borrar no está en la lista");
 
         if (nodo.isFirstNode()) {
-            principio = nodo.getNext();
-            principio.setPrevious(null);
+            deleteFirst();
+        } else if (nodo.isLastNode()) {
+            deleteLast();
         } else {
             DequeNode anterior = nodo.getPrevious();
             anterior.setNext(nodo.getNext());
-        }
-
-        if (nodo.isLastNode()) {
-            fin = nodo.getPrevious();
-            fin.setNext(null);
-        } else {
             DequeNode siguiente = nodo.getNext();
             siguiente.setPrevious(nodo.getPrevious());
+            size--;
         }
     }
 
