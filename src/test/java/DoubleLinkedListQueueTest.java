@@ -1,12 +1,11 @@
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleLinkedListQueueTest {
     @Test
     public void NodoSeCreaConValorCorrecto() {
-        DequeNode<Integer> nodo = new DequeNode(2, null, null);
+        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
 
         int expectedValue = 2;
         int obtainedValue = nodo.getItem();
@@ -15,33 +14,33 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void NodoSeAñadeAListaVacia() {
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
-        DequeNode<Integer> nodo = new DequeNode(2, null, null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
+        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
         lista.append(nodo);
         int expectedSize = 1;
         int obtainedSize = lista.size();
-        DequeNode expectedValue = nodo;
-        DequeNode obtainedValue = lista.peekFirst();
+        DequeNode<Integer> expectedValue = nodo;
+        DequeNode<Integer> obtainedValue = lista.peekFirst();
         assertEquals(expectedSize, obtainedSize);
         assertEquals(expectedValue, obtainedValue);
     }
 
     @Test
     public void NodoSeAñadeALaIzquierdaDeListaNoVacia() {
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
-        DequeNode<Integer> nodo = new DequeNode(2, null, null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(new DequeNode<>(3, null, null));
+        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
         lista.append(nodo);
         int expectedSize = 2;
         int obtainedSize = lista.size();
-        DequeNode expectedValue = nodo;
-        DequeNode obtainedValue = lista.peekLast();
+        DequeNode<Integer> expectedValue = nodo;
+        DequeNode<Integer> obtainedValue = lista.peekLast();
         assertEquals(expectedSize, obtainedSize);
         assertEquals(expectedValue, obtainedValue);
     }
 
     @Test
     public void AñadirNodoNullLanzaExcepcion() {
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(new DequeNode<>(3, null, null));
         assertThrows(RuntimeException.class, () -> lista.append(null));
     }
 
@@ -49,7 +48,7 @@ class DoubleLinkedListQueueTest {
     public void añadirNodoIzquierdaEnColaVacia() {
         DequeNode<Integer> node = new DequeNode<>(1,null,null);
 
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         lista.appendLeft(node);
 
@@ -66,7 +65,7 @@ class DoubleLinkedListQueueTest {
 
         DequeNode<Integer> node2 = new DequeNode<>(2,null,null);
 
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         lista.appendLeft(node);
 
@@ -80,7 +79,7 @@ class DoubleLinkedListQueueTest {
     @Test
     public void añadirNodoNuloIzquierdaEnCola() {
 
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         assertThrows(RuntimeException.class,()->lista.appendLeft(null));
     }
@@ -91,7 +90,7 @@ class DoubleLinkedListQueueTest {
 
         DequeNode<Integer> node2 = new DequeNode<>(2,null,null);
 
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         lista.appendLeft(node);
 
@@ -106,7 +105,7 @@ class DoubleLinkedListQueueTest {
     public void comprobarQueElNodoIntroducidoEstaCorrectamenteConectadoEnUnaColaVacia() {
         DequeNode<Integer> node = new DequeNode<>(1,null,null);
 
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         lista.appendLeft(node);
 
@@ -117,7 +116,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void buscarUnElementoEnLaPosicionCeroEnColaVacia(){
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         assertThrows(IndexOutOfBoundsException.class,()->{
             lista.getAt(0);
@@ -126,7 +125,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void buscarUnElementoEnLaPosicionCincoEnColaConUnElemento(){
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         DequeNode<Integer> node = new DequeNode<>(1,null,null);
 
@@ -137,33 +136,48 @@ class DoubleLinkedListQueueTest {
         });
     }
 
+    @Test
+    public void buscarUnElementoEnLaPosicionMenosDiezEnColaConDosElementos(){
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
+
+        DequeNode<Integer> node = new DequeNode<>(1,null,null);
+
+        lista.appendLeft(node);
+
+        lista.appendLeft(new DequeNode<>(2,null,null));
+
+        assertThrows(IndexOutOfBoundsException.class,()->{
+            lista.getAt(-10);
+        });
+    }
+
 
 
     @Test
     public void buscarUnElementoEnLaPosicionDosEnColaConCincoElementos(){
-        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
 
         DequeNode<Integer> node = new DequeNode(2,null,null);
 
         lista.appendLeft(new DequeNode<>(0,null,null));
 
-        lista.appendLeft(new DequeNode(1,null,null));
+        lista.appendLeft(new DequeNode<>(1,null,null));
 
         lista.appendLeft(node);
 
-        lista.appendLeft(new DequeNode(3,null,null));
+        lista.appendLeft(new DequeNode<>(3,null,null));
 
-        lista.appendLeft(new DequeNode(4,null,null));
+        lista.appendLeft(new DequeNode<>(4,null,null));
 
         assertEquals(node,lista.getAt(2));
     }
 
     @Test
     public void deleteLastBorraUltimoElemento() {
-        DequeNode<Integer> primero = new DequeNode(2, null, null);
-        DequeNode<Integer> ultimo = new DequeNode(3, null, null);
-        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
-        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue(primero);
+        DequeNode<Integer> primero = new DequeNode<>(2, null, null);
+        DequeNode<Integer> ultimo = new DequeNode<>(3, null, null);
+        DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(primero);
+        DoubleLinkedListQueue<Integer> listaEsperada = new DoubleLinkedListQueue<>(primero);
         listaActual.append(ultimo);
         listaActual.deleteLast();
 
@@ -173,9 +187,9 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void deleteLastBorraUnicoElemento() {
-        DequeNode<Integer> ultimo = new DequeNode(2, null, null);
-        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(ultimo);
-        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue(null);
+        DequeNode<Integer> ultimo = new DequeNode<>(2, null, null);
+        DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(ultimo);
+        DoubleLinkedListQueue<Object> listaEsperada = new DoubleLinkedListQueue<>(null);
         listaActual.deleteLast();
 
         assertEquals(listaActual.size(), listaEsperada.size());
@@ -184,16 +198,16 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void deleteLastSaltaExcepcionSiListaEstaVacia() {
-        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(null);
         assertThrows(RuntimeException.class,()->listaActual.deleteLast());
     }
 
     @Test
     public void deleteFirstBorraPrimerElemento() {
-        DequeNode<Integer> primero = new DequeNode(2, null, null);
-        DequeNode<Integer> ultimo = new DequeNode(3, null, null);
-        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
-        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue(ultimo);
+        DequeNode<Integer> primero = new DequeNode<>(2, null, null);
+        DequeNode<Integer> ultimo = new DequeNode<>(3, null, null);
+        DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(primero);
+        DoubleLinkedListQueue<Integer> listaEsperada = new DoubleLinkedListQueue<>(ultimo);
         listaActual.append(ultimo);
         listaActual.deleteFirst();
 
@@ -204,8 +218,8 @@ class DoubleLinkedListQueueTest {
     @Test
     public void deleteFirstBorraUnicoElemento() {
         DequeNode<Integer> primero = new DequeNode<Integer>(2, null, null);
-        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(primero);
-        DoubleLinkedListQueue listaEsperada = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(primero);
+        DoubleLinkedListQueue<Integer> listaEsperada = new DoubleLinkedListQueue<>(null);
         listaActual.deleteFirst();
 
         assertEquals(listaActual.size(), listaEsperada.size());
@@ -214,7 +228,7 @@ class DoubleLinkedListQueueTest {
 
     @Test
     public void deleteFirstSaltaExcepcionSiListaEstaVacia() {
-        DoubleLinkedListQueue listaActual = new DoubleLinkedListQueue(null);
+        DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(null);
         assertThrows(RuntimeException.class,()->listaActual.deleteFirst());
     }
 }
