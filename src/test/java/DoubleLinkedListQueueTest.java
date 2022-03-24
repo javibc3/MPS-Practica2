@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleLinkedListQueueTest {
     @Test
-    public void NodoSeCreaConValorCorrecto() {
+    public void nodoSeCreaConValorCorrecto() {
         DequeNode<Integer> nodo = new DequeNode(2, null, null);
 
         int expectedValue = 2;
@@ -17,7 +17,7 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void NodoSeAñadeAListaVacia() {
+    public void nodoSeAñadeAListaVacia() {
         DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
         DequeNode<Integer> nodo = new DequeNode(2, null, null);
         lista.append(nodo);
@@ -30,7 +30,7 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void NodoSeAñadeALaIzquierdaDeListaNoVacia() {
+    public void nodoSeAñadeALaIzquierdaDeListaNoVacia() {
         DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
         DequeNode<Integer> nodo = new DequeNode(2, null, null);
         lista.append(nodo);
@@ -43,7 +43,7 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void AñadirNodoNullLanzaExcepcion() {
+    public void añadirNodoNullLanzaExcepcion() {
         DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
         assertThrows(RuntimeException.class, () -> lista.append(null));
     }
