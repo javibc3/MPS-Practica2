@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     private DequeNode<T> principio;
@@ -25,10 +27,17 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public void appendLeft(DequeNode<T> node) {
-        principio.setPrevious(node);
-        node.setPrevious(null);
-        node.setNext(principio);
-        principio = node;
+        if (node == null) throw new RuntimeException("El nodo que ha pasado es NULL");
+        if(size == 0){
+            principio = node;
+            fin = node;
+        }
+        else {
+            principio.setNext(node);
+            node.setPrevious(principio);
+            node.setNext(null);
+            principio = node;
+        }
         size++;
     }
 
@@ -73,5 +82,25 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public DequeNode<T> getAt(int position) {
+        return null;
+    }
+
+    @Override
+    public DequeNode<T> find(T item) {
+        return null;
+    }
+
+    @Override
+    public void delete(DequeNode<T> node) {
+
+    }
+
+    @Override
+    public void sort(Comparator<?> comparator) {
+
     }
 }
