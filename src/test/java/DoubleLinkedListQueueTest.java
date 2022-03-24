@@ -25,6 +25,8 @@ class DoubleLinkedListQueueTest {
         assertEquals(node,lista.peekFirst());
 
         assertEquals(node,lista.peekLast());
+
+        assertEquals(1,lista.size());
     }
 
     @Test
@@ -40,6 +42,8 @@ class DoubleLinkedListQueueTest {
         lista.appendLeft(node2);
 
         assertEquals(node2,lista.peekFirst());
+
+        assertEquals(2,lista.size());
     }
 
     @Test
