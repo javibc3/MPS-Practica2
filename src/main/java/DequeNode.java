@@ -55,17 +55,4 @@ public class DequeNode<T> {
     public boolean isNotATerminalNode() {
         return (!isFirstNode() && !isLastNode());
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DequeNode<?> dequeNode = (DequeNode<?>) o;
-        return Objects.equals(item, dequeNode.item) && Objects.equals(next, dequeNode.next) && Objects.equals(previous, dequeNode.previous);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(item, next, previous);
-    }
 }
