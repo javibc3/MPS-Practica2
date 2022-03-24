@@ -139,16 +139,17 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
         }
     }
 
-    private <T> void sortHelper(Comparator<T> comparator) {
-        boolean swapped = false;
+    private <t> void sortHelper(Comparator<t> comparator) {
+        boolean swapped = true;
         int sz = size;
-        while (!swapped) {
+        while (swapped && sz > 0) {
+            swapped = false;
             for (int i = 1; i <= sz - 1; i++) {
-                DequeNode<T> nodoAnterior = (DequeNode<T>) getAt(i - 1);
-                DequeNode<T> nodoSiguiente = (DequeNode<T>) getAt(i);
+                DequeNode<t> nodoAnterior = (DequeNode<t>) getAt(i - 1);
+                DequeNode<t> nodoSiguiente = (DequeNode<t>) getAt(i);
 
                 if (comparator.compare(nodoAnterior.getItem(), nodoSiguiente.getItem()) > 0) {
-                    T aux = nodoAnterior.getItem();
+                    t aux = nodoAnterior.getItem();
                     nodoAnterior.setItem(nodoSiguiente.getItem());
                     nodoSiguiente.setItem(aux);
                     swapped = true;

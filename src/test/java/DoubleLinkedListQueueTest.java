@@ -1,11 +1,13 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleLinkedListQueueTest {
     @Test
-    public void NodoSeCreaConValorCorrecto() {
-        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
+    public void nodoSeCreaConValorCorrecto() {
+        DequeNode<Integer> nodo = new DequeNode(2, null, null);
 
         int expectedValue = 2;
         int obtainedValue = nodo.getItem();
@@ -13,9 +15,9 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void NodoSeAñadeAListaVacia() {
-        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
-        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
+    public void nodoSeAñadeAListaVacia() {
+        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(null);
+        DequeNode<Integer> nodo = new DequeNode(2, null, null);
         lista.append(nodo);
         int expectedSize = 1;
         int obtainedSize = lista.size();
@@ -26,9 +28,9 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void NodoSeAñadeALaIzquierdaDeListaNoVacia() {
-        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(new DequeNode<>(3, null, null));
-        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
+    public void nodoSeAñadeALaIzquierdaDeListaNoVacia() {
+        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
+        DequeNode<Integer> nodo = new DequeNode(2, null, null);
         lista.append(nodo);
         int expectedSize = 2;
         int obtainedSize = lista.size();
@@ -39,8 +41,8 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void AñadirNodoNullLanzaExcepcion() {
-        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(new DequeNode<>(3, null, null));
+    public void añadirNodoNullLanzaExcepcion() {
+        DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
         assertThrows(RuntimeException.class, () -> lista.append(null));
     }
 
@@ -278,5 +280,71 @@ class DoubleLinkedListQueueTest {
         lista.appendLeft(node);
 
         assertEquals(node,lista.find("dos"));
+    }
+
+    @Test
+    public void sortDeListaVacia() {
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
+        lista.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 < o2) return -1;
+                if (o1 == o2) return 0;
+                return 1;
+            }
+        });
+        assertEquals(0, lista.size());
+    }
+
+    @Test
+    public void sortDeListaConUnElemento() {
+        DequeNode<Integer> nodo = new DequeNode<>(2, null, null);
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(nodo);
+        lista.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 < o2) return -1;
+                if (o1 == o2) return 0;
+                return 1;
+            }
+        });
+        assertEquals(1, lista.size());
+        assertEquals(nodo, lista.peekFirst());
+        assertEquals(nodo, lista.peekLast());
+    }
+
+    @Test
+    public void sortDeListaConMasDeUnElemento() {
+        DequeNode<Integer> nodo1 = new DequeNode<>(1, null, null);
+        DequeNode<Integer> nodo2 = new DequeNode<>(2, null, null);
+        DequeNode<Integer> nodo3 = new DequeNode<>(3, null, null);
+        DequeNode<Integer> nodo4 = new DequeNode<>(4, null, null);
+        DequeNode<Integer> nodo5 = new DequeNode<>(5, null, null);
+
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(nodo2);
+        lista.append(nodo3);
+        lista.append(nodo5);
+        lista.append(nodo4);
+        lista.append(nodo1);
+
+        lista.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 < o2) return -1;
+                if (o1 == o2) return 0;
+                return 1;
+            }
+        });
+
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.getAt(i).getItem());
+        }
+
+        assertEquals(5, lista.size());
+        assertEquals(1, lista.getAt(0).getItem());
+        assertEquals(2, lista.getAt(1).getItem());
+        assertEquals(3, lista.getAt(2).getItem());
+        assertEquals(4, lista.getAt(3).getItem());
+        assertEquals(5, lista.getAt(4).getItem());
     }
 }
