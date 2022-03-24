@@ -95,7 +95,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
             throw new IndexOutOfBoundsException("La posicion introducida es negativa");
         }
         else{
-            DequeNode<T> node = principio;
+            DequeNode node = principio;
             for(int i = 0; i < position; i++){
                 node = node.getNext();
             }
@@ -121,7 +121,6 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
         while (nodo != null && nodo != node) {
             nodo = nodo.getNext();
         }
-
         if (nodo == null) throw new RuntimeException("Nodo a borrar no está en la lista");
 
         DequeNode<T> nodoAnterior = nodo.getPrevious();

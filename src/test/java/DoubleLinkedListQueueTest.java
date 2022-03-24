@@ -181,8 +181,8 @@ class DoubleLinkedListQueueTest {
         listaActual.append(ultimo);
         listaActual.deleteLast();
 
-        assertEquals(listaActual.size(), listaEsperada.size());
-        assertEquals(listaEsperada.peekFirst(), listaActual.peekFirst());
+        assertEquals(2, listaActual.size());
+        assertEquals(segundo, listaActual.peekLast());
     }
 
     @Test
@@ -192,8 +192,8 @@ class DoubleLinkedListQueueTest {
         DoubleLinkedListQueue<Object> listaEsperada = new DoubleLinkedListQueue<>(null);
         listaActual.deleteLast();
 
-        assertEquals(listaActual.size(), listaEsperada.size());
-        assertEquals(listaEsperada.peekLast(), listaActual.peekLast());
+        assertEquals(0, listaActual.size());
+        assertNull(listaActual.peekLast());
     }
 
     @Test
@@ -211,8 +211,8 @@ class DoubleLinkedListQueueTest {
         listaActual.append(ultimo);
         listaActual.deleteFirst();
 
-        assertEquals(listaActual.size(), listaEsperada.size());
-        assertEquals(listaEsperada.peekFirst(), listaActual.peekFirst());
+        assertEquals(2, listaActual.size());
+        assertEquals(segundo, listaActual.peekFirst());
     }
 
     @Test
@@ -222,8 +222,8 @@ class DoubleLinkedListQueueTest {
         DoubleLinkedListQueue<Integer> listaEsperada = new DoubleLinkedListQueue<>(null);
         listaActual.deleteFirst();
 
-        assertEquals(listaActual.size(), listaEsperada.size());
-        assertEquals(listaEsperada.peekFirst(), listaActual.peekFirst());
+        assertEquals(0, listaActual.size());
+        assertNull(listaActual.peekFirst());
     }
 
     @Test
