@@ -105,12 +105,38 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
 
     @Override
     public DequeNode<T> find(T item) {
-        return null;
+        if (item == null) throw new RuntimeException("Item a encontrar no puede ser null");
+        DequeNode nodo = principio;
+        while (nodo != null && nodo.getItem() != item) {
+            nodo = nodo.getNext();
+        }
+        return nodo;
     }
 
     @Override
     public void delete(DequeNode<T> node) {
+        if (node == null) throw new RuntimeException("Nodo a borrar no puede ser null");
+        DequeNode nodo = principio;
+        while (nodo != null && nodo != node) {
+            nodo = nodo.getNext();
+        }
+        if (nodo == null) throw new RuntimeException("Nodo a borrar no está en la lista");
 
+        if (nodo.isFirstNode()) {
+            principio = nodo.getNext();
+            principio.setPrevious(null);
+        } else {
+            DequeNode anterior = nodo.getPrevious();
+            anterior.setNext(nodo.getNext());
+        }
+
+        if (nodo.isLastNode()) {
+            fin = nodo.getPrevious();
+            fin.setNext(null);
+        } else {
+            DequeNode siguiente = nodo.getNext();
+            siguiente.setPrevious(nodo.getPrevious());
+        }
     }
 
     @Override
