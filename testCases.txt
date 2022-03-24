@@ -19,3 +19,9 @@ Comprobar a buscar un elemento en la posicion 0 en una lista vacia
 Comprobar a buscar un elemnto en la posicion 5 en una lista con un elemento
 Comprobar a buscar un elemento en la posicion -10 en una lista con dos elementos
 Comprobar a buscar un elemento en la posicion 2 en una lista con cinco elementos
+Comprobar a buscar un elemento nulo en una lista
+Comprobar a buscar el elemento 2 en una lista de dos elementos y que contiene el elemento 2
+Comprobar a buscar el elemento 2 en una lista de dos elementos y que no contiene el elemento 2
+Comprobar a buscar el elemento "dos" en una lista con un elemento y contiene a "dos"
+Comprobar a buscar el elemento "cinco" en una lista vacia
+

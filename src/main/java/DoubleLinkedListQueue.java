@@ -107,7 +107,7 @@ public class DoubleLinkedListQueue<T> implements DoubleEndedQueuees<T> {
     public DequeNode<T> find(T item) {
         if (item == null) throw new RuntimeException("Item a encontrar no puede ser null");
         DequeNode<T> nodo = principio;
-        while (nodo != null && nodo.getItem() != item) {
+        while (nodo != null && !nodo.getItem().equals(item)) {
             nodo = nodo.getNext();
         }
         return nodo;

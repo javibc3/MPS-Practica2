@@ -231,4 +231,44 @@ class DoubleLinkedListQueueTest {
         DoubleLinkedListQueue<Integer> listaActual = new DoubleLinkedListQueue<>(null);
         assertThrows(RuntimeException.class,()->listaActual.deleteFirst());
     }
+
+    @Test
+    public void buscarElElementoNuloEnUnaCola(){
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(null);
+
+        assertThrows(RuntimeException.class,()->{
+            lista.find(null);
+        });
+    }
+
+    @Test
+    public void buscarElElementoDosYEstaPresenteEnUnaColaConDosElementos(){
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(new DequeNode<>(1,null,null));
+
+        DequeNode<Integer> node = new DequeNode<>(2,null,null);
+        lista.appendLeft(node);
+
+        assertEquals(node,lista.find(2));
+    }
+
+    @Test
+    public void buscarElElementoDosYNoEstaPresenteEnUnaColaConDosElementos(){
+        DoubleLinkedListQueue<Integer> lista = new DoubleLinkedListQueue<>(new DequeNode<>(1,null,null));
+
+        DequeNode<Integer> node = new DequeNode<>(3,null,null);
+        lista.appendLeft(node);
+
+        assertNull(lista.find(2));
+    }
+
+    @Test
+    public void buscarElElementoDosStringYEstaPresenteEnUnaColaConDosElementos(){
+        DoubleLinkedListQueue<String> lista = new DoubleLinkedListQueue<>(null);
+
+        DequeNode<String> node = new DequeNode<>("dos",null,null);
+
+        lista.appendLeft(node);
+
+        assertEquals(node,lista.find("dos"));
+    }
 }
