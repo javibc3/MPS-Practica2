@@ -30,7 +30,7 @@ class DoubleLinkedListQueueTest {
     }
 
     @Test
-    public void nodoSeAñadeALaIzquierdaDeListaNoVacia() {
+    public void nodoSeAñadeALaDerechaDeListaNoVacia() {
         DoubleLinkedListQueue lista = new DoubleLinkedListQueue(new DequeNode(3, null, null));
         DequeNode<Integer> nodo = new DequeNode(2, null, null);
         lista.append(nodo);

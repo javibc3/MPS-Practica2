@@ -10,11 +10,14 @@ Comprobar que un nodo sin posterior sea el ultimo
 Comprobar que un nodo con anterior y posterior no es ultimo ni primero
 
 CASOS DE PRUEBA DEQUELINKEDLISTQUEUE
-Comprobar a añadir un nodo por la izquierda en una cola vacia
-Comporbar a añadir un nodo por la izquieda con una cola con un elemento
-Comprobar a añadir un nodo nulo en una cola
-Comprobar que el nodo añadido por la izquierda este correctamente conectado en una cola con un elemento
-Comprobar que el nodo añadido por la izquierda este correctamente conectado en una cola vacia
+Comprobar que se crea correctamente una cola con un nodo
+Comprobar a añadir un nodo por la derecha en una lista vacia
+Comprobar a añadir un nodo por la derecha con una lista con un elemento
+Comprobar a añadir un nodo por la izquierda en una lista vacia
+Comporbar a añadir un nodo por la izquieda con una lista con un elemento
+Comprobar a añadir un nodo nulo en una lista
+Comprobar que el nodo añadido por la izquierda este correctamente conectado en una lista con un elemento
+Comprobar que el nodo añadido por la izquierda este correctamente conectado en una lista vacia
 Comprobar a buscar un elemento en la posicion 0 en una lista vacia
 Comprobar a buscar un elemnto en la posicion 5 en una lista con un elemento
 Comprobar a buscar un elemento en la posicion -10 en una lista con dos elementos
